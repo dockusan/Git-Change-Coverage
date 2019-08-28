@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.filefilter.TrueFileFilter;
+
 public class GitDiffParser {
 	
 	private static String startAddPattern = "+++ b";
@@ -48,6 +50,15 @@ public class GitDiffParser {
 			}
 		} while (diff != null);
 		return results;
+	}
+	
+	static String getLastHash(final String branch, final String workspace) {
+		try {
+			return executeShellCommand("git", "--git-dir", workspace + File.separator + ".git", "rev-parse", "origin/"+branch);
+		} catch (Exception e) {
+			Log.log(e.getMessage());
+		}
+		return "";
 	}
 	
 	private static ChangeEntity mapToChangeEntity(String diff) {
