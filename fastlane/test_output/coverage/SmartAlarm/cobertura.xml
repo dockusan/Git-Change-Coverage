@@ -1,0 +1,277 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage line-rate="0.1379310344827586" branch-rate="1.0000000000000000" lines-covered="28" lines-valid="203" branches-covered="0" branches-valid="0" complexity="0.0" timestamp="1594889038" version="Slather 2.4.9">
+  <sources>
+    <source>/Users/ducnguyen/Documents/Projects/vibe-ios-sojo-travel</source>
+  </sources>
+  <packages>
+    <package name="Features Modules.SmartAlarm.SmartAlarm.Data.Layer.Enums" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+      <classes>
+        <class name="MuteDisruptionsError" filename="Features Modules/SmartAlarm/SmartAlarm/Data.Layer/Enums/MuteDisruptionsError.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="16" branch="false" hits="0"/>
+            <line number="17" branch="false" hits="0"/>
+            <line number="18" branch="false" hits="0"/>
+            <line number="19" branch="false" hits="0"/>
+            <line number="20" branch="false" hits="0"/>
+            <line number="21" branch="false" hits="0"/>
+            <line number="22" branch="false" hits="0"/>
+            <line number="23" branch="false" hits="0"/>
+            <line number="24" branch="false" hits="0"/>
+            <line number="25" branch="false" hits="0"/>
+            <line number="26" branch="false" hits="0"/>
+            <line number="27" branch="false" hits="0"/>
+          </lines>
+        </class>
+        <class name="MuteDisruptionsState" filename="Features Modules/SmartAlarm/SmartAlarm/Data.Layer/Enums/MuteDisruptionsState.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="17" branch="false" hits="0"/>
+            <line number="18" branch="false" hits="0"/>
+            <line number="19" branch="false" hits="0"/>
+            <line number="20" branch="false" hits="0"/>
+            <line number="21" branch="false" hits="0"/>
+            <line number="22" branch="false" hits="0"/>
+            <line number="23" branch="false" hits="0"/>
+            <line number="24" branch="false" hits="0"/>
+            <line number="25" branch="false" hits="0"/>
+            <line number="26" branch="false" hits="0"/>
+            <line number="27" branch="false" hits="0"/>
+            <line number="28" branch="false" hits="0"/>
+            <line number="29" branch="false" hits="0"/>
+            <line number="30" branch="false" hits="0"/>
+            <line number="31" branch="false" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Features Modules.SmartAlarm.SmartAlarm.Data.Layer.Repositories" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+      <classes>
+        <class name="MuteDisruptions" filename="Features Modules/SmartAlarm/SmartAlarm/Data.Layer/Repositories/MuteDisruptions.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="15" branch="false" hits="0"/>
+            <line number="16" branch="false" hits="0"/>
+            <line number="17" branch="false" hits="0"/>
+            <line number="22" branch="false" hits="0"/>
+            <line number="23" branch="false" hits="0"/>
+            <line number="24" branch="false" hits="0"/>
+            <line number="25" branch="false" hits="0"/>
+            <line number="26" branch="false" hits="0"/>
+            <line number="27" branch="false" hits="0"/>
+            <line number="28" branch="false" hits="0"/>
+            <line number="29" branch="false" hits="0"/>
+            <line number="30" branch="false" hits="0"/>
+            <line number="31" branch="false" hits="0"/>
+            <line number="32" branch="false" hits="0"/>
+            <line number="33" branch="false" hits="0"/>
+            <line number="35" branch="false" hits="0"/>
+            <line number="36" branch="false" hits="0"/>
+            <line number="37" branch="false" hits="0"/>
+            <line number="38" branch="false" hits="0"/>
+            <line number="39" branch="false" hits="0"/>
+            <line number="40" branch="false" hits="0"/>
+            <line number="41" branch="false" hits="0"/>
+            <line number="42" branch="false" hits="0"/>
+            <line number="43" branch="false" hits="0"/>
+            <line number="44" branch="false" hits="0"/>
+            <line number="45" branch="false" hits="0"/>
+            <line number="46" branch="false" hits="0"/>
+            <line number="47" branch="false" hits="0"/>
+            <line number="49" branch="false" hits="0"/>
+            <line number="50" branch="false" hits="0"/>
+            <line number="51" branch="false" hits="0"/>
+            <line number="52" branch="false" hits="0"/>
+            <line number="53" branch="false" hits="0"/>
+            <line number="54" branch="false" hits="0"/>
+            <line number="55" branch="false" hits="0"/>
+            <line number="56" branch="false" hits="0"/>
+            <line number="57" branch="false" hits="0"/>
+            <line number="58" branch="false" hits="0"/>
+            <line number="59" branch="false" hits="0"/>
+            <line number="60" branch="false" hits="0"/>
+            <line number="61" branch="false" hits="0"/>
+            <line number="63" branch="false" hits="0"/>
+            <line number="64" branch="false" hits="0"/>
+            <line number="65" branch="false" hits="0"/>
+          </lines>
+        </class>
+        <class name="SmartAlarmAnalytics" filename="Features Modules/SmartAlarm/SmartAlarm/Data.Layer/Repositories/SmartAlarmAnalytics.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="13" branch="false" hits="0"/>
+            <line number="15" branch="false" hits="0"/>
+            <line number="16" branch="false" hits="0"/>
+            <line number="17" branch="false" hits="0"/>
+            <line number="18" branch="false" hits="0"/>
+            <line number="19" branch="false" hits="0"/>
+            <line number="20" branch="false" hits="0"/>
+            <line number="21" branch="false" hits="0"/>
+            <line number="22" branch="false" hits="0"/>
+            <line number="23" branch="false" hits="0"/>
+            <line number="24" branch="false" hits="0"/>
+            <line number="26" branch="false" hits="0"/>
+            <line number="27" branch="false" hits="0"/>
+            <line number="28" branch="false" hits="0"/>
+            <line number="29" branch="false" hits="0"/>
+            <line number="30" branch="false" hits="0"/>
+            <line number="31" branch="false" hits="0"/>
+            <line number="32" branch="false" hits="0"/>
+            <line number="33" branch="false" hits="0"/>
+            <line number="34" branch="false" hits="0"/>
+            <line number="35" branch="false" hits="0"/>
+            <line number="36" branch="false" hits="0"/>
+            <line number="38" branch="false" hits="0"/>
+            <line number="39" branch="false" hits="0"/>
+            <line number="40" branch="false" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Features Modules.SmartAlarm.SmartAlarm.Models" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+      <classes>
+        <class name="Module" filename="Features Modules/SmartAlarm/SmartAlarm/Models/Module.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="14" branch="false" hits="0"/>
+            <line number="15" branch="false" hits="0"/>
+            <line number="16" branch="false" hits="0"/>
+            <line number="23" branch="false" hits="0"/>
+            <line number="24" branch="false" hits="0"/>
+            <line number="25" branch="false" hits="0"/>
+            <line number="27" branch="false" hits="0"/>
+            <line number="28" branch="false" hits="0"/>
+            <line number="29" branch="false" hits="0"/>
+            <line number="30" branch="false" hits="0"/>
+            <line number="31" branch="false" hits="0"/>
+            <line number="32" branch="false" hits="0"/>
+            <line number="33" branch="false" hits="0"/>
+            <line number="34" branch="false" hits="0"/>
+            <line number="35" branch="false" hits="0"/>
+            <line number="37" branch="false" hits="0"/>
+            <line number="38" branch="false" hits="0"/>
+            <line number="39" branch="false" hits="0"/>
+            <line number="40" branch="false" hits="0"/>
+            <line number="41" branch="false" hits="0"/>
+            <line number="42" branch="false" hits="0"/>
+            <line number="44" branch="false" hits="0"/>
+            <line number="45" branch="false" hits="0"/>
+            <line number="46" branch="false" hits="0"/>
+          </lines>
+        </class>
+        <class name="ModuleDependencies" filename="Features Modules/SmartAlarm/SmartAlarm/Models/ModuleDependencies.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="12" branch="false" hits="0"/>
+          </lines>
+        </class>
+        <class name="SmartAlarmPushInfo" filename="Features Modules/SmartAlarm/SmartAlarm/Models/SmartAlarmPushInfo.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="23" branch="false" hits="0"/>
+            <line number="24" branch="false" hits="0"/>
+            <line number="25" branch="false" hits="0"/>
+            <line number="26" branch="false" hits="0"/>
+            <line number="27" branch="false" hits="0"/>
+            <line number="28" branch="false" hits="0"/>
+            <line number="29" branch="false" hits="0"/>
+            <line number="30" branch="false" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Features Modules.SmartAlarm.SmartAlarm.Presentation.Layer.ViewModels" line-rate="0.4307692307692308" branch-rate="1.0000000000000000" complexity="0.0">
+      <classes>
+        <class name="MuteDisuptionVM" filename="Features Modules/SmartAlarm/SmartAlarm/Presentation.Layer/ViewModels/MuteDisuptionVM.swift" line-rate="0.4307692307692308" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="17" branch="false" hits="3"/>
+            <line number="18" branch="false" hits="3"/>
+            <line number="19" branch="false" hits="3"/>
+            <line number="20" branch="false" hits="3"/>
+            <line number="21" branch="false" hits="3"/>
+            <line number="27" branch="false" hits="3"/>
+            <line number="28" branch="false" hits="3"/>
+            <line number="29" branch="false" hits="3"/>
+            <line number="30" branch="false" hits="0"/>
+            <line number="31" branch="false" hits="3"/>
+            <line number="32" branch="false" hits="3"/>
+            <line number="33" branch="false" hits="0"/>
+            <line number="34" branch="false" hits="0"/>
+            <line number="35" branch="false" hits="3"/>
+            <line number="36" branch="false" hits="3"/>
+            <line number="38" branch="false" hits="5"/>
+            <line number="39" branch="false" hits="5"/>
+            <line number="40" branch="false" hits="5"/>
+            <line number="42" branch="false" hits="3"/>
+            <line number="43" branch="false" hits="3"/>
+            <line number="44" branch="false" hits="3"/>
+            <line number="45" branch="false" hits="3"/>
+            <line number="46" branch="false" hits="3"/>
+            <line number="47" branch="false" hits="3"/>
+            <line number="48" branch="false" hits="0"/>
+            <line number="49" branch="false" hits="3"/>
+            <line number="50" branch="false" hits="3"/>
+            <line number="51" branch="false" hits="3"/>
+            <line number="52" branch="false" hits="3"/>
+            <line number="53" branch="false" hits="0"/>
+            <line number="54" branch="false" hits="3"/>
+            <line number="55" branch="false" hits="3"/>
+            <line number="56" branch="false" hits="3"/>
+            <line number="58" branch="false" hits="0"/>
+            <line number="59" branch="false" hits="0"/>
+            <line number="60" branch="false" hits="0"/>
+            <line number="61" branch="false" hits="0"/>
+            <line number="62" branch="false" hits="0"/>
+            <line number="63" branch="false" hits="0"/>
+            <line number="64" branch="false" hits="0"/>
+            <line number="65" branch="false" hits="0"/>
+            <line number="66" branch="false" hits="0"/>
+            <line number="68" branch="false" hits="0"/>
+            <line number="69" branch="false" hits="0"/>
+            <line number="70" branch="false" hits="0"/>
+            <line number="71" branch="false" hits="0"/>
+            <line number="72" branch="false" hits="0"/>
+            <line number="73" branch="false" hits="0"/>
+            <line number="74" branch="false" hits="0"/>
+            <line number="75" branch="false" hits="0"/>
+            <line number="76" branch="false" hits="0"/>
+            <line number="77" branch="false" hits="0"/>
+            <line number="78" branch="false" hits="0"/>
+            <line number="79" branch="false" hits="0"/>
+            <line number="81" branch="false" hits="0"/>
+            <line number="82" branch="false" hits="0"/>
+            <line number="83" branch="false" hits="0"/>
+            <line number="84" branch="false" hits="0"/>
+            <line number="85" branch="false" hits="0"/>
+            <line number="86" branch="false" hits="0"/>
+            <line number="87" branch="false" hits="0"/>
+            <line number="88" branch="false" hits="0"/>
+            <line number="89" branch="false" hits="0"/>
+            <line number="90" branch="false" hits="0"/>
+            <line number="91" branch="false" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Features Modules.SmartAlarm.SmartAlarm.Services" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+      <classes>
+        <class name="SmartAlarmPushNotificationHandler" filename="Features Modules/SmartAlarm/SmartAlarm/Services/SmartAlarmPushNotificationHandler.swift" line-rate="0.0000000000000000" branch-rate="1.0000000000000000" complexity="0.0">
+          <methods/>
+          <lines>
+            <line number="18" branch="false" hits="0"/>
+            <line number="19" branch="false" hits="0"/>
+            <line number="20" branch="false" hits="0"/>
+            <line number="21" branch="false" hits="0"/>
+            <line number="22" branch="false" hits="0"/>
+            <line number="24" branch="false" hits="0"/>
+            <line number="25" branch="false" hits="0"/>
+            <line number="26" branch="false" hits="0"/>
+            <line number="27" branch="false" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

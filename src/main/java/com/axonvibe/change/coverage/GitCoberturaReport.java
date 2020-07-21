@@ -1,5 +1,6 @@
 package com.axonvibe.change.coverage;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,14 +23,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class GitJacocoReport {
+public class GitCoberturaReport {
 
-	
 	static CoverageResult generateGitReport(String jacocoReportFile, List<ChangeEntity> gitChanges) {
 		CoverageResult result = new CoverageResult();
 		List<ChangeEntity> changes = new ArrayList<ChangeEntity>(gitChanges);
 		
-		downloadJacocoReportFormat(jacocoReportFile);
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	    factory.setValidating(true);
 	    factory.setIgnoringElementContentWhitespace(true);
@@ -39,53 +38,74 @@ public class GitJacocoReport {
 		    File file = new File(jacocoReportFile);
 		    Document document = builder.parse(file);
 		    NodeList  childs = document.getChildNodes();
+		    List<Node> packageListNode = new ArrayList<Node>();
 		    List<Node> packageNodes = new ArrayList<Node>();
+
 		    for (int i = 0; i < childs.getLength(); i++) {
-//		    	Log.log(childs.item(i).getNodeName());
-		    	packageNodes.addAll(getNode(childs.item(i), "package"));
+		    	packageListNode.addAll(getNode(childs.item(i), "packages"));
 			}
+		    
+		    for (int i = 0; i < packageListNode.size(); i++) {
+		    	packageNodes.addAll(getNode(packageListNode.get(i), "package"));
+			}
+		    
 		    packageNodes.forEach( packageNode -> {
 		    	if (packageNode.hasAttributes()) {
-		    		String packageName = packageNode.getAttributes().getNamedItem("name").getNodeValue();
-		    		
+		    		String packageNameWithDot = packageNode.getAttributes().getNamedItem("name").getNodeValue();
+		    		String packageName = packageNameWithDot.replace(".", "/");
 		    		List<ChangeEntity> packageChanges = changes.stream().filter( changeEntity -> {
 		    			return changeEntity.getFilePath().endsWith(packageName);
 		    		}).collect(Collectors.toList());
+		    		
 		    		if (!packageChanges.isEmpty()) {
-		    			getNode(packageNode, "sourcefile").forEach(sourceFileNode -> {
-		    				if (sourceFileNode.hasAttributes() && sourceFileNode.hasChildNodes()) {
-		    					String sourceFileName = sourceFileNode.getAttributes().getNamedItem("name").getNodeValue();
-		    					if (sourceFileName != null) {
-		    						ChangeEntity fileChange = packageChanges.stream().filter(changeEntity -> {
-		    							return sourceFileName.equals(changeEntity.getFileName());
-		    						}).findFirst().orElse(null);
-		    						if (fileChange != null) {
-		    							Log.log("Search coverage for -----> " + fileChange.toString());
-		    							getNode(sourceFileNode, "line")
-		    							.forEach(lineNode -> {
-		    								LineCoverage lineCoverage = mapLineNodeToLineCoverage(lineNode);
-		    								//Log.log("Line coverage " + lineCoverage);
-		    								if (lineCoverage != null && fileChange.getAddedLines().stream().anyMatch( lineNumber -> {
-		    									return lineNumber == lineCoverage.lineNumber; 
-		    								})) {
-		    									Log.log(lineCoverage.toString());
-		    									addCoverageResult(result, lineCoverage);
-		    								}
-		    							});
-		    						}
-		    					}
-		    				}
-		    			});
+		    			List<Node> classesNodes = new ArrayList<Node>();
+			 		    for (int i = 0; i < packageNodes.size(); i++) {
+			 		    	classesNodes.addAll(getNode(packageNodes.get(i), "classes"));
+			 			}
+		    			if(!classesNodes.isEmpty()) {
+		    				classesNodes.forEach(classNode -> {
+		    					getNode(classNode, "class").forEach(classFileNode -> {
+		    						if (classFileNode.hasAttributes() && classFileNode.hasChildNodes()) {
+				    					String sourceFile = classFileNode.getAttributes().getNamedItem("filename").getNodeValue();
+				    					ChangeEntity sourceFileEntity = new ChangeEntity(sourceFile);
+				    					String sourceFileName = sourceFileEntity.getFileName();
+				    					if (sourceFileName != null) {
+				    						ChangeEntity fileChange = packageChanges.stream().filter(changeEntity -> {
+				    							return sourceFileName.trim().equals(changeEntity.getFileName().trim());
+				    						}).findFirst().orElse(null);
+				    						if (fileChange != null) {
+				    							Log.log("Search coverage for -----> " + fileChange.toString());
+				    							List<Node> lineNodes = getNode(classFileNode, "lines");
+
+				    							lineNodes.forEach(line -> {
+				    								getNode(line, "line")
+					    							.forEach(lineNode -> {
+					    								CoberturaLineCoverage lineCoverage = mapLineNodeToLineCoverage(lineNode);
+					    								//Log.log("Line coverage " + lineCoverage);
+					    								if (lineCoverage != null && fileChange.getAddedLines().stream().anyMatch( lineNumber -> {
+					    									return lineNumber == lineCoverage.lineNumber; 
+					    								})) {
+					    									Log.log(lineCoverage.toString());
+					    									addCoverageResult(result, lineCoverage);
+					    								}
+					    							});
+				    							});
+				    						}
+				    					}
+				    				}
+			    				});
+		    				});
+		    			}
 		    		}
 		    	}
 		    });
 		} catch (ParserConfigurationException | SAXException | IOException e) {
-			Log.log(e.getMessage());
+			Log.debug(e.getMessage());
 		}
+		Log.debug("Finish "+jacocoReportFile+" "+result.coveredLines+"  "+result.totalAddLines);
 
 		return result;
 	}
-	
 	private static List<Node> getNode(Node node, String... trees) {
 		List<Node> results = new ArrayList<Node>();
 		if (trees.length == 1) {
@@ -111,16 +131,14 @@ public class GitJacocoReport {
 		return results;
 	}
 	
-	private static LineCoverage mapLineNodeToLineCoverage(Node lineNode) {
+	private static CoberturaLineCoverage mapLineNodeToLineCoverage(Node lineNode) {
 		if (lineNode.hasAttributes()) {
 			try {
-				LineCoverage result = new LineCoverage();
+				CoberturaLineCoverage result = new CoberturaLineCoverage();
 				NamedNodeMap attributes = lineNode.getAttributes();
-				result.lineNumber = Integer.parseInt(attributes.getNamedItem("nr").getNodeValue());
-				result.missInstructions = Integer.parseInt(attributes.getNamedItem("mi").getNodeValue());
-				result.coveredInstructions = Integer.parseInt(attributes.getNamedItem("ci").getNodeValue());
-				result.missBranchs = Integer.parseInt(attributes.getNamedItem("mb").getNodeValue());
-				result.coveredBranchs = Integer.parseInt(attributes.getNamedItem("cb").getNodeValue());
+				result.lineNumber = Integer.parseInt(attributes.getNamedItem("number").getNodeValue());
+				result.hits = Integer.parseInt(attributes.getNamedItem("hits").getNodeValue());
+				result.branch = Boolean.valueOf(attributes.getNamedItem("branch").getNodeValue());
 				return result;
 			} catch (Exception e) {
 				Log.log("mapLineNodeToLineCoverage " + e.getMessage());
@@ -129,13 +147,10 @@ public class GitJacocoReport {
 		return null;
 	}
 
-	private static CoverageResult addCoverageResult(CoverageResult initialResult, LineCoverage lineCoverage) {
-		initialResult.coveredInstructions += lineCoverage.coveredInstructions;
-		initialResult.coveredBranchs += lineCoverage.coveredBranchs;
-		initialResult.coveredLines += lineCoverage.coveredInstructions > lineCoverage.missInstructions ? 1 : 0;
+	private static CoverageResult addCoverageResult(CoverageResult initialResult, CoberturaLineCoverage lineCoverage) {
+		initialResult.coveredBranchs += lineCoverage.branch ? 1 : 0;;
+		initialResult.coveredLines += lineCoverage.hits > 0 ? 1 : 0;
 		initialResult.totalAddLines += 1;
-		initialResult.totalBranchs += lineCoverage.coveredBranchs + lineCoverage.missBranchs;
-		initialResult.totalInstructions += lineCoverage.coveredInstructions + lineCoverage.missInstructions;
 		return initialResult;
 	}
 	
@@ -156,16 +171,14 @@ public class GitJacocoReport {
 	}
 }
 
-class LineCoverage {
+class CoberturaLineCoverage {
 	int lineNumber = 0;
-	int missInstructions = 0;
-	int coveredInstructions = 0;
-	int missBranchs = 0;
-	int coveredBranchs = 0;
+	int hits = 0;
+	boolean branch = false;
 	@Override
 	public String toString() {
-		return "Line " + lineNumber + ": mi=" + missInstructions + ", ci=" + coveredInstructions + ", mb=" + missBranchs + ", cb=" + coveredBranchs;
+		return "Line " + lineNumber + ": lineNumber=" + lineNumber + ", hits=" + hits + ", branch=" + branch;
 	}
 	
-	
 }
+
