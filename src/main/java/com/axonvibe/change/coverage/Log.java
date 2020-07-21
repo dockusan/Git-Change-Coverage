@@ -11,4 +11,8 @@ public class Log {
 			logger.println(message);
 		}
 	}
+	
+	static void debug(String message ) {
+		System.out.println(message);
+	}
 }
