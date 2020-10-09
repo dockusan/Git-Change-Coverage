@@ -51,10 +51,12 @@ public class GitCoberturaReport {
 		    
 		    packageNodes.forEach( packageNode -> {
 		    	if (packageNode.hasAttributes()) {
-		    		String packageNameWithDot = packageNode.getAttributes().getNamedItem("name").getNodeValue();
-		    		String packageName = packageNameWithDot.replace(".", "/");
+		    		String packageName = packageNode.getAttributes().getNamedItem("name").getNodeValue();
+		    		
 		    		List<ChangeEntity> packageChanges = changes.stream().filter( changeEntity -> {
-		    			return changeEntity.getFilePath().endsWith(packageName);
+		    			String changeEntityFilePath = changeEntity.getFilePath().replace("/", ".");
+		    			boolean isChanged = changeEntityFilePath.endsWith(packageName);
+		    			return isChanged;
 		    		}).collect(Collectors.toList());
 		    		
 		    		if (!packageChanges.isEmpty()) {

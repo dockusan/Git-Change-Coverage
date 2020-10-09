@@ -205,10 +205,10 @@ public class GitChangeCoverageWrapper extends Recorder {
 
 		if (!isCodeCoveragePass(result)) {
 			Log.log(String.format(Locale.US,
-					"Build faile by code coverage below thresholds(Line: %.2f%%, Instruction: %.2f%%, Branch: %.2f%%)",
+					"Build failed by code coverage below thresholds(Line: %.2f%%, Instruction: %.2f%%, Branch: %.2f%%)",
 					lineCoveredPercent, instructionCoveredPercent, branchCoveredPercent));
-			Log.log("---------------------------Jacoco Git change result---------------------------");
-			// throw new AbortException("Code coverage doesn't pass");
+			build.setResult(Result.FAILURE);
+			return false;
 		} else {
 			Log.log("---------------------------Jacoco Git change result---------------------------");
 		}
